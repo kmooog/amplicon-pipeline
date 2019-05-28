@@ -27,4 +27,4 @@ outputs:
   vsearch_out1:
     type: File
     outputBinding:
-      glob: 'vsearch_out*'
+      glob: 'vsearch_out'
