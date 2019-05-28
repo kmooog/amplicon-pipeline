@@ -19,8 +19,8 @@ inputs:
     'sbg:y': -99
   - id: uchime_db
     type: File
-    'sbg:x': -334.9885559082031
-    'sbg:y': 315.44915771484375
+    'sbg:x': 40.50566864013672
+    'sbg:y': 251.20408630371094
 outputs:
   - id: vsearch_out_file
     outputSource:
@@ -87,18 +87,18 @@ steps:
       - id: db
         source: uchime_db
       - id: file
-        source: prinseq/prinseq_out
+        source: sed/awk_results
       - id: out
         default: results.uchime
     out:
       - id: tg_out1
     run: ./uchime.cwl
-    'sbg:x': -109.81233215332031
-    'sbg:y': 236.52935791015625
+    'sbg:x': 230.06349182128906
+    'sbg:y': 240.72560119628906
   - id: vsearch
     in:
       - id: file
-        source: sed/awk_results
+        source: uchime/tg_out1
       - id: vsearch_id
         default: '0.97'
       - id: vsearch_out1
@@ -113,12 +113,12 @@ steps:
   - id: awk
     in:
       - id: file
-        source: uchime/tg_out1
+        source: prinseq/prinseq_out
     out:
       - id: awk_results
     run: ./awk.cwl
-    'sbg:x': 76.54421997070312
-    'sbg:y': 237.54876708984375
+    'sbg:x': 158.6984100341797
+    'sbg:y': 66.87754821777344
   - id: sed
     in:
       - id: input
@@ -126,6 +126,6 @@ steps:
     out:
       - id: awk_results
     run: ./sed.cwl
-    'sbg:x': 207.5487518310547
-    'sbg:y': 235.8321990966797
+    'sbg:x': 282.6099853515625
+    'sbg:y': 60.15192794799805
 requirements: []
