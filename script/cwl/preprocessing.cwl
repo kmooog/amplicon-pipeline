@@ -13,11 +13,11 @@ inputs:
     type: File
     'sbg:x': -561
     'sbg:y': -33
-  - id: uchimeDB
+  - id: phix
     type: string
     'sbg:x': -241
     'sbg:y': -99
-  - id: db
+  - id: uchime_db
     type: File
     'sbg:x': -334.9885559082031
     'sbg:y': 315.44915771484375
@@ -59,7 +59,7 @@ steps:
       - id: filename
         source: flash/flash_out
       - id: phix
-        source: uchimeDB
+        source: phix
       - id: unmapped
         default: unmapped.fq
     out:
@@ -85,7 +85,7 @@ steps:
   - id: uchime
     in:
       - id: db
-        source: db
+        source: uchime_db
       - id: file
         source: prinseq/prinseq_out
       - id: out
