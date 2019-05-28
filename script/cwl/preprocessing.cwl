@@ -26,8 +26,8 @@ outputs:
     outputSource:
       - _v_s_e_a_r_c_h/vsearch_out1
     type: File
-    'sbg:x': 683.8380737304688
-    'sbg:y': 112.8268051147461
+    'sbg:x': 649.3626098632812
+    'sbg:y': 125.9189224243164
 steps:
   - id: trimgalore
     in:
