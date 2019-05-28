@@ -124,7 +124,7 @@ steps:
       - id: vsearch_out2
         default: vsearch_out
     out:
-      - id: vsearch_out1
+      - id: vsearch_out_file
     run: ./VSEARCH.cwl
     'sbg:x': 493.625732421875
     'sbg:y': 123
