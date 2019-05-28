@@ -99,7 +99,6 @@ steps:
     in:
       - id: file
         source: sed/awk_results
-        file: sed/awk_results
       - id: vsearch_id
         default: '0.97'
       - id: vsearch_out1
