@@ -24,7 +24,7 @@ inputs:
       prefix: --id
 
 outputs:
-  vsearch_out1:
+  vsearch_out_file:
     type: File
     outputBinding:
       glob: 'vsearch_out'
