@@ -1,7 +1,7 @@
 cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: flash
-arguments: ['--max-overlap', '300', '-o', 'flash']
+arguments: ['--max-overlap', '200', '-o', 'flash']
 inputs:
   file1:
     type: File

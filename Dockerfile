@@ -18,6 +18,7 @@ RUN apt-get install -y \
            unzip \
            cwltool \
            vim \
+           autoconf \
            --no-install-recommends
 
 # change git config
@@ -75,6 +76,16 @@ RUN chmod 777 uchime4.2.40_i86linux32
 # cutadapt (for TrimGalore)
 WORKDIR /root
 RUN pip3 install cutadapt
+
+# vsearch
+WORKDIR /root
+RUN wget https://github.com/torognes/vsearch/archive/v2.13.4.tar.gz
+RUN tar xzf v2.13.4.tar.gz
+RUN cd vsearch-2.13.4
+RUN ./autogen.sh
+RUN ./configure
+RUN make
+RUN make install
 
 # install in-house pipeline
 WORKDIR /root
