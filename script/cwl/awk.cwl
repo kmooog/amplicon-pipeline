@@ -3,10 +3,11 @@ class: CommandLineTool
 baseCommand: awk
 arguments: ["'(NR - 1) % 4 < 2'"]
 inputs:
-  input:
+  file:
     type: File
     inputBinding:
       position: 1
 outputs:
-  results: stdout
-
+  awk_results:
+    type: stdout
+stdout: awkout.txt

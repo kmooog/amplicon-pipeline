@@ -19,15 +19,15 @@ inputs:
     'sbg:y': -99
   - id: db
     type: File
-    'sbg:x': -89.68148803710938
-    'sbg:y': 297.21234130859375
+    'sbg:x': -334.9885559082031
+    'sbg:y': 315.44915771484375
 outputs:
-  - id: vsearch_out
+  - id: vsearch_out_file
     outputSource:
-      - _v_s_e_a_r_c_h/vsearch_out1
+      - vsearch/vsearch_out_file
     type: File
-    'sbg:x': 649.3626098632812
-    'sbg:y': 125.9189224243164
+    'sbg:x': 557.50537109375
+    'sbg:y': 206.38201904296875
 steps:
   - id: trimgalore
     in:
@@ -50,8 +50,8 @@ steps:
     out:
       - id: flash_out
     run: ./flash.cwl
-    'sbg:x': -168
-    'sbg:y': 113
+    'sbg:x': -236.87680053710938
+    'sbg:y': 100.70056915283203
   - id: bowtie2
     in:
       - id: bowtie_log
@@ -80,9 +80,9 @@ steps:
     out:
       - id: prinseq_out
     run: ./prinseq.cwl
-    'sbg:x': 54.320674896240234
-    'sbg:y': -1
-  - id: _u_c_h_e_m_e
+    'sbg:x': 30.464506149291992
+    'sbg:y': 63.068843841552734
+  - id: uchime
     in:
       - id: db
         source: db
@@ -92,40 +92,40 @@ steps:
         default: results.uchime
     out:
       - id: tg_out1
-    run: ./UCHEME.cwl
-    'sbg:x': 55.49169921875
-    'sbg:y': 223.9887237548828
-  - id: sed
-    in:
-      - id: input
-        source: awk/results
-    out:
-      - id: results
-    run: ./sed.cwl
-    'sbg:x': 324.8255310058594
-    'sbg:y': 161.04556274414062
-  - id: awk
-    in:
-      - id: input
-        source: _u_c_h_e_m_e/tg_out1
-    out:
-      - id: results
-    run: ./awk.cwl
-    'sbg:x': 185.3628692626953
-    'sbg:y': 194.79324340820312
-  - id: _v_s_e_a_r_c_h
+    run: ./uchime.cwl
+    'sbg:x': -109.81233215332031
+    'sbg:y': 236.52935791015625
+  - id: vsearch
     in:
       - id: file
-        source: sed/results
+        source: sed/awk_results
+        file: sed/awk_results
       - id: vsearch_id
         default: '0.97'
       - id: vsearch_out1
         default: vsearch_out
-      - id: vsearch_out2
-        default: vsearch_out
     out:
       - id: vsearch_out_file
-    run: ./VSEARCH.cwl
-    'sbg:x': 493.625732421875
-    'sbg:y': 123
+    run: ./vsearch.cwl
+    'sbg:x': 373.4743347167969
+    'sbg:y': 211.10076904296875
+  - id: awk
+    in:
+      - id: input
+        source: uchime/tg_out1
+    out:
+      - id: awk_results
+    run: ./awk.cwl
+    'sbg:x': 73.50511169433594
+    'sbg:y': 247.60272216796875
+  - id: sed
+    in:
+      - id: input
+        source: awk/awk_results
+        file: awk/awk_results
+    out:
+      - id: awk_results
+    run: ./sed.cwl
+    'sbg:x': 217
+    'sbg:y': 276.0045166015625
 requirements: []
