@@ -123,7 +123,6 @@ steps:
     in:
       - id: input
         source: awk/awk_results
-        file: awk/awk_results
     out:
       - id: awk_results
     run: ./sed.cwl
