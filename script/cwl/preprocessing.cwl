@@ -104,6 +104,8 @@ steps:
         default: '0.97'
       - id: vsearch_out1
         default: vsearch_out
+      - id: vsearch_out2
+        default: vsearch_out
     out:
       - id: vsearch_out_file
     run: ./vsearch.cwl
@@ -111,13 +113,13 @@ steps:
     'sbg:y': 211.10076904296875
   - id: awk
     in:
-      - id: input
+      - id: file
         source: uchime/tg_out1
     out:
       - id: awk_results
     run: ./awk.cwl
-    'sbg:x': 73.50511169433594
-    'sbg:y': 247.60272216796875
+    'sbg:x': 76.54421997070312
+    'sbg:y': 237.54876708984375
   - id: sed
     in:
       - id: input
@@ -126,6 +128,6 @@ steps:
     out:
       - id: awk_results
     run: ./sed.cwl
-    'sbg:x': 217
-    'sbg:y': 276.0045166015625
+    'sbg:x': 207.5487518310547
+    'sbg:y': 235.8321990966797
 requirements: []
