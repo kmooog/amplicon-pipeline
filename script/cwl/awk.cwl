@@ -1,7 +1,7 @@
 cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: awk
-arguments: ["'(NR - 1) % 4 < 2'"]
+arguments: ["(NR - 1) % 4 < 2"]
 inputs:
   file:
     type: File
