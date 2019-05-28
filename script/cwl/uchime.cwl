@@ -1,7 +1,6 @@
 cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: /root/uchime4.2.40_i86linux32
-arguments: ["--dont_gzip"]
 inputs:
   file:
     type: File
