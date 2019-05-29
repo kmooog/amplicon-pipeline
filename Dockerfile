@@ -19,6 +19,7 @@ RUN apt-get install -y \
            cwltool \
            vim \
            autoconf \
+           automake \
            --no-install-recommends
 
 # change git config
