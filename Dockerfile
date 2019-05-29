@@ -81,11 +81,12 @@ RUN pip3 install cutadapt
 WORKDIR /root
 RUN wget https://github.com/torognes/vsearch/archive/v2.13.4.tar.gz
 RUN tar xzf v2.13.4.tar.gz
-RUN cd vsearch-2.13.4
+WORKDIR /root/vsearch-2.13.4
 RUN ./autogen.sh
 RUN ./configure
 RUN make
 RUN make install
+WORKDIR /root
 
 # install in-house pipeline
 WORKDIR /root
