@@ -7,11 +7,6 @@ inputs:
     inputBinding:
       position: 1
       prefix: --input
-  db:
-    type: File
-    inputBinding:
-      position: 2
-      prefix: --db
   out:
     type: string
     inputBinding:
