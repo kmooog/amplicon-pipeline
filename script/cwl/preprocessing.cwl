@@ -17,17 +17,17 @@ inputs:
     type: string
     'sbg:x': -241
     'sbg:y': -99
-  - id: uchime_db
+  - id: db
     type: File
-    'sbg:x': 40.50566864013672
-    'sbg:y': 251.20408630371094
+    'sbg:x': -173.021484375
+    'sbg:y': 350.3230895996094
 outputs:
   - id: vsearch_out_file
     outputSource:
       - vsearch/vsearch_out_file
     type: File
-    'sbg:x': 557.50537109375
-    'sbg:y': 206.38201904296875
+    'sbg:x': 203
+    'sbg:y': 205.22877502441406
 steps:
   - id: trimgalore
     in:
@@ -80,21 +80,8 @@ steps:
     out:
       - id: prinseq_out
     run: ./prinseq.cwl
-    'sbg:x': 30.464506149291992
-    'sbg:y': 63.068843841552734
-  - id: uchime
-    in:
-      - id: db
-        source: uchime_db
-      - id: file
-        source: sed/awk_results
-      - id: out
-        default: results.uchime
-    out:
-      - id: tg_out1
-    run: ./uchime.cwl
-    'sbg:x': 230.06349182128906
-    'sbg:y': 240.72560119628906
+    'sbg:x': 46.614017486572266
+    'sbg:y': 7.116480827331543
   - id: vsearch
     in:
       - id: file
@@ -108,8 +95,8 @@ steps:
     out:
       - id: vsearch_out_file
     run: ./vsearch.cwl
-    'sbg:x': 373.4743347167969
-    'sbg:y': 211.10076904296875
+    'sbg:x': 74.26220703125
+    'sbg:y': 207.49098205566406
   - id: awk
     in:
       - id: file
@@ -117,8 +104,8 @@ steps:
     out:
       - id: awk_results
     run: ./awk.cwl
-    'sbg:x': 158.6984100341797
-    'sbg:y': 66.87754821777344
+    'sbg:x': 161.02073669433594
+    'sbg:y': 7.095749855041504
   - id: sed
     in:
       - id: input
@@ -126,6 +113,19 @@ steps:
     out:
       - id: awk_results
     run: ./sed.cwl
-    'sbg:x': 282.6099853515625
-    'sbg:y': 60.15192794799805
+    'sbg:x': 274.4481506347656
+    'sbg:y': 7.137210845947266
+  - id: uchime
+    in:
+      - id: db
+        source: db
+      - id: file
+        source: sed/awk_results
+      - id: out
+        default: uchime.result
+    out:
+      - id: tg_out1
+    run: ./uchime.cwl
+    'sbg:x': -47.82665252685547
+    'sbg:y': 221.77853393554688
 requirements: []

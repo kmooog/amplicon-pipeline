@@ -12,7 +12,11 @@ inputs:
     inputBinding:
       position: 3
       prefix: --uchimeout
-
+  db:
+    type: File
+    inputBinding:
+      position: 2
+      prefix: --db
 outputs:
   tg_out1:
     type: File
