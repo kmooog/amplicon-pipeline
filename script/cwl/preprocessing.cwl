@@ -132,6 +132,8 @@ steps:
         default: '0.97'
       - id: vsearch_out1
         default: vsearch_out
+      - id: vsearch_out2
+        default: vsearch_out
     out:
       - id: vsearch_out_file
     run: ./vsearch.cwl
