@@ -19,15 +19,15 @@ inputs:
     'sbg:y': -99
   - id: db
     type: File
-    'sbg:x': -173.021484375
-    'sbg:y': 350.3230895996094
+    'sbg:x': 194.66928100585938
+    'sbg:y': 222.19114685058594
 outputs:
-  - id: uchime_out
+  - id: chimera_filtered
     outputSource:
-      - uchime/uchime_out
+      - uchime_filter/chimera_filtered
     type: File
-    'sbg:x': 211.48309326171875
-    'sbg:y': 231.94369506835938
+    'sbg:x': 683.5048217773438
+    'sbg:y': 73.75080871582031
 steps:
   - id: trimgalore
     in:
@@ -91,26 +91,37 @@ steps:
     run: ./awk.cwl
     'sbg:x': 161.02073669433594
     'sbg:y': 7.095749855041504
-  - id: sed
-    in:
-      - id: input
-        source: awk/awk_results
-    out:
-      - id: awk_results
-    run: ./sed.cwl
-    'sbg:x': 274.4481506347656
-    'sbg:y': 7.137210845947266
   - id: uchime
     in:
       - id: db
         source: db
       - id: file
-        source: sed/awk_results
+        source: sed/sed_results
       - id: out
         default: uchime.result
     out:
       - id: uchime_out
     run: ./uchime.cwl
-    'sbg:x': 34.950111389160156
-    'sbg:y': 232.34693908691406
+    'sbg:x': 402.75079345703125
+    'sbg:y': 228.0128936767578
+  - id: uchime_filter
+    in:
+      - id: fasta
+        source: sed/sed_results
+      - id: uchimeout
+        source: uchime/uchime_out
+    out:
+      - id: chimera_filtered
+    run: ./uchime_filter.cwl
+    'sbg:x': 554.0096435546875
+    'sbg:y': 77.7540283203125
+  - id: sed
+    in:
+      - id: input
+        source: awk/awk_results
+    out:
+      - id: sed_results
+    run: ./sed.cwl
+    'sbg:x': 322.2137145996094
+    'sbg:y': 8.990326881408691
 requirements: []
