@@ -18,9 +18,9 @@ inputs:
     'sbg:x': 194.66928100585938
     'sbg:y': 222.19114685058594
   - id: phix
-    type: File
-    'sbg:x': -191.2227020263672
-    'sbg:y': -89.7847671508789
+    type: string
+    'sbg:x': -223.34405517578125
+    'sbg:y': -62.66566848754883
 outputs:
   - id: chimera_filtered
     outputSource:
@@ -122,6 +122,6 @@ steps:
     out:
       - id: bowtie_out
     run: ./bowtie2.cwl
-    'sbg:x': -99.95248413085938
-    'sbg:y': -4.045346260070801
+    'sbg:x': -102.98512268066406
+    'sbg:y': 9.3588285446167
 requirements: []
