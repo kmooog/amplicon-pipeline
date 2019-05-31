@@ -128,6 +128,10 @@ steps:
     in:
       - id: file
         source: uchime_filter/chimera_filtered
+      - id: vsearch_id
+        default: '0.97'
+      - id: vsearch_out1
+        default: vsearch_out
     out:
       - id: vsearch_out_file
     run: ./vsearch.cwl
