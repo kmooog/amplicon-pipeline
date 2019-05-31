@@ -22,12 +22,12 @@ inputs:
     'sbg:x': -223.34405517578125
     'sbg:y': -62.66566848754883
 outputs:
-  - id: chimera_filtered
+  - id: singleton_removed
     outputSource:
-      - uchime_filter/chimera_filtered
+      - remove_singleton/singleton_removed
     type: File
-    'sbg:x': 708.6346435546875
-    'sbg:y': 83.55543518066406
+    'sbg:x': 1129.533203125
+    'sbg:y': 71.73120880126953
 steps:
   - id: trimgalore
     in:
@@ -124,4 +124,28 @@ steps:
     run: ./bowtie2.cwl
     'sbg:x': -102.98512268066406
     'sbg:y': 9.3588285446167
+  - id: vsearch
+    in:
+      - id: file
+        source: uchime_filter/chimera_filtered
+      - id: vsearch_id
+        default: '0.97'
+      - id: vsearch_out1
+        default: vsearch_out
+      - id: vsearch_out2
+        default: vsearch_out
+    out:
+      - id: vsearch_out_file
+    run: ./vsearch.cwl
+    'sbg:x': 729.6685180664062
+    'sbg:y': 73.88605499267578
+  - id: remove_singleton
+    in:
+      - id: vsearch_out
+        source: vsearch/vsearch_out_file
+    out:
+      - id: singleton_removed
+    run: ./remove_singleton.cwl
+    'sbg:x': 949.2843627929688
+    'sbg:y': 70.64398193359375
 requirements: []
