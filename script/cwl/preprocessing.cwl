@@ -55,9 +55,7 @@ steps:
   - id: prinseq
     in:
       - id: input
-        source:
-          - bowtie2/flash_out
-          - bowtie2/bowtie_out
+        source: bowtie2/bowtie_out
       - id: lc_method
         default: dust
       - id: lc_threshold
@@ -126,5 +124,4 @@ steps:
     run: ./bowtie2.cwl
     'sbg:x': -99.95248413085938
     'sbg:y': -4.045346260070801
-requirements:
-  - class: MultipleInputFeatureRequirement
+requirements: []
