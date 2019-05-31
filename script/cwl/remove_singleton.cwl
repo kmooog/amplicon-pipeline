@@ -3,7 +3,7 @@ class: CommandLineTool
 baseCommand: ["python", "/root/amplicon-pipeline/script/python/remove_singleton.py"]
 inputs:
   vsearch_out:
-    type: File
+    type: File[]
     inputBinding:
       position: 1
 outputs:

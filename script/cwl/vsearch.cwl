@@ -25,6 +25,8 @@ inputs:
 
 outputs:
   vsearch_out_file:
-    type: File
+    type:
+      type: array
+      items: File
     outputBinding:
-      glob: 'vsearch_out*'
+      glob: "vsearch_out*"

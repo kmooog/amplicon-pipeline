@@ -26,8 +26,8 @@ outputs:
     outputSource:
       - remove_singleton/singleton_removed
     type: File
-    'sbg:x': 1129.533203125
-    'sbg:y': 71.73120880126953
+    'sbg:x': 1240.5216064453125
+    'sbg:y': 91.59917449951172
 steps:
   - id: trimgalore
     in:
@@ -128,24 +128,19 @@ steps:
     in:
       - id: file
         source: uchime_filter/chimera_filtered
-      - id: vsearch_id
-        default: '0.97'
-      - id: vsearch_out1
-        default: vsearch_out
-      - id: vsearch_out2
-        default: vsearch_out
     out:
       - id: vsearch_out_file
     run: ./vsearch.cwl
-    'sbg:x': 729.6685180664062
-    'sbg:y': 73.88605499267578
+    'sbg:x': 719.8574829101562
+    'sbg:y': 90.25492858886719
   - id: remove_singleton
     in:
       - id: vsearch_out
-        source: vsearch/vsearch_out_file
+        source:
+          - vsearch/vsearch_out_file
     out:
       - id: singleton_removed
     run: ./remove_singleton.cwl
-    'sbg:x': 949.2843627929688
-    'sbg:y': 70.64398193359375
+    'sbg:x': 1039
+    'sbg:y': 90.60183715820312
 requirements: []
