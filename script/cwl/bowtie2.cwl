@@ -3,7 +3,7 @@ class: CommandLineTool
 baseCommand: bowtie2
 inputs:
   phix:
-    type: File
+    type: string
     inputBinding:
       position: 1
       prefix: -x
