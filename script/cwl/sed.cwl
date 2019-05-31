@@ -9,5 +9,5 @@ inputs:
     inputBinding:
       position: 1
 outputs:
-  awk_results: 
+  sed_results: 
     type: stdout

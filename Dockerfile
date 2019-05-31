@@ -92,7 +92,7 @@ WORKDIR /root
 # install in-house pipeline
 WORKDIR /root
 RUN pip3 install pathlib
-RUN git clone https://github.com/kmooog/amplicon-pipeline.git
+RUN git clone   https://github.com/kmooog/amplicon-pipeline.git
 
 # add permission
 WORKDIR /
