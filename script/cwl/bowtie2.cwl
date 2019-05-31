@@ -3,7 +3,7 @@ class: CommandLineTool
 baseCommand: bowtie2
 inputs:
   phix:
-    type: string
+    type: File
     inputBinding:
       position: 1
       prefix: -x
@@ -17,7 +17,6 @@ inputs:
     inputBinding:
       position: 3
       prefix: --un
-      
   bowtie_log:
     type: string
     inputBinding:
@@ -25,7 +24,7 @@ inputs:
       prefix: -S
       
 outputs:
-  flash_out:
+  bowtie_out:
     type: File
     outputBinding:
       glob: unmapped.fq

@@ -13,21 +13,21 @@ inputs:
     type: File
     'sbg:x': -561
     'sbg:y': -33
-  - id: phix
-    type: string
-    'sbg:x': -241
-    'sbg:y': -99
   - id: db
     type: File
     'sbg:x': 194.66928100585938
     'sbg:y': 222.19114685058594
+  - id: phix
+    type: File
+    'sbg:x': -191.2227020263672
+    'sbg:y': -89.7847671508789
 outputs:
   - id: chimera_filtered
     outputSource:
       - uchime_filter/chimera_filtered
     type: File
-    'sbg:x': 683.5048217773438
-    'sbg:y': 73.75080871582031
+    'sbg:x': 708.6346435546875
+    'sbg:y': 83.55543518066406
 steps:
   - id: trimgalore
     in:
@@ -52,25 +52,12 @@ steps:
     run: ./flash.cwl
     'sbg:x': -236.87680053710938
     'sbg:y': 100.70056915283203
-  - id: bowtie2
-    in:
-      - id: bowtie_log
-        default: bowtie_log
-      - id: filename
-        source: flash/flash_out
-      - id: phix
-        source: phix
-      - id: unmapped
-        default: unmapped.fq
-    out:
-      - id: flash_out
-    run: ./bowtie2.cwl
-    'sbg:x': -83.16877746582031
-    'sbg:y': 6.438818454742432
   - id: prinseq
     in:
       - id: input
-        source: bowtie2/flash_out
+        source:
+          - bowtie2/flash_out
+          - bowtie2/bowtie_out
       - id: lc_method
         default: dust
       - id: lc_threshold
@@ -124,4 +111,20 @@ steps:
     run: ./sed.cwl
     'sbg:x': 322.2137145996094
     'sbg:y': 8.990326881408691
-requirements: []
+  - id: bowtie2
+    in:
+      - id: bowtie_log
+        default: bowtie_log
+      - id: filename
+        source: flash/flash_out
+      - id: phix
+        source: phix
+      - id: unmapped
+        default: unmapped.fq
+    out:
+      - id: bowtie_out
+    run: ./bowtie2.cwl
+    'sbg:x': -99.95248413085938
+    'sbg:y': -4.045346260070801
+requirements:
+  - class: MultipleInputFeatureRequirement
