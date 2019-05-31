@@ -22,12 +22,12 @@ inputs:
     'sbg:x': -173.021484375
     'sbg:y': 350.3230895996094
 outputs:
-  - id: vsearch_out_file
+  - id: uchime_out
     outputSource:
-      - vsearch/vsearch_out_file
+      - uchime/uchime_out
     type: File
-    'sbg:x': 203
-    'sbg:y': 205.22877502441406
+    'sbg:x': 211.48309326171875
+    'sbg:y': 231.94369506835938
 steps:
   - id: trimgalore
     in:
@@ -82,21 +82,6 @@ steps:
     run: ./prinseq.cwl
     'sbg:x': 46.614017486572266
     'sbg:y': 7.116480827331543
-  - id: vsearch
-    in:
-      - id: file
-        source: uchime/tg_out1
-      - id: vsearch_id
-        default: '0.97'
-      - id: vsearch_out1
-        default: vsearch_out
-      - id: vsearch_out2
-        default: vsearch_out
-    out:
-      - id: vsearch_out_file
-    run: ./vsearch.cwl
-    'sbg:x': 74.26220703125
-    'sbg:y': 207.49098205566406
   - id: awk
     in:
       - id: file
@@ -124,8 +109,8 @@ steps:
       - id: out
         default: uchime.result
     out:
-      - id: tg_out1
+      - id: uchime_out
     run: ./uchime.cwl
-    'sbg:x': -47.82665252685547
-    'sbg:y': 221.77853393554688
+    'sbg:x': 34.950111389160156
+    'sbg:y': 232.34693908691406
 requirements: []
