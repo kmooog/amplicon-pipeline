@@ -1,6 +1,6 @@
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: "python /root/amplicon-pipeline/script/pytthon/uchime_filter.py"
+baseCommand: "python /root/amplicon-pipeline/script/python/uchime_filter.py"
 inputs:
   uchimeout:
     type: File
