@@ -159,6 +159,12 @@ steps:
         source: blastdb
       - id: blastinput
         source: remove_singleton/singleton_removed
+      - id: evalue
+        default: '1e-5'
+      - id: outfile
+        default: blast_result.tsv
+      - id: outfmt
+        default: '6'
     out:
       - id: blast_out
     run: ./blast.cwl
