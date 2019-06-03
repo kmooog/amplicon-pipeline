@@ -21,13 +21,17 @@ inputs:
     type: string
     'sbg:x': -223.34405517578125
     'sbg:y': -62.66566848754883
+  - id: blastdb
+    type: string
+    'sbg:x': 912.9746704101562
+    'sbg:y': 254.56581115722656
 outputs:
-  - id: singleton_removed
+  - id: blast_out
     outputSource:
-      - remove_singleton/singleton_removed
+      - blast/blast_out
     type: File
-    'sbg:x': 1240.5216064453125
-    'sbg:y': 91.59917449951172
+    'sbg:x': 1200.007080078125
+    'sbg:y': 158
 steps:
   - id: trimgalore
     in:
@@ -147,6 +151,17 @@ steps:
     out:
       - id: singleton_removed
     run: ./remove_singleton.cwl
-    'sbg:x': 1039
-    'sbg:y': 90.60183715820312
+    'sbg:x': 861.4810791015625
+    'sbg:y': 86.37716674804688
+  - id: blast
+    in:
+      - id: blastdb
+        source: blastdb
+      - id: blastinput
+        source: remove_singleton/singleton_removed
+    out:
+      - id: blast_out
+    run: ./blast.cwl
+    'sbg:x': 1072.6669921875
+    'sbg:y': 159.669677734375
 requirements: []
