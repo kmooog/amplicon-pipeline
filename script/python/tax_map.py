@@ -25,7 +25,6 @@ genus_dict = {}
 
 for db_line in open(db):
 	if db_line.split()[0] != "primaryAccession" and db_line.strip().split("\t")[3][:-1].split(";")[0] in ["Bacteria","Archaea"]:
-		#Bacteria かArchaeaでFilterの必要
 		db_list = db_line.strip().split("\t")
 		tax_id = db_list[0]
 		tax = db_list[3][:-1]
