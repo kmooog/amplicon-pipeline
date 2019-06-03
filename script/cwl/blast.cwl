@@ -22,6 +22,10 @@ inputs:
     type: string
     inputBinding:
       prefix: -evalue
+  max_target_seqs:
+    type: string
+    inputBinding:
+      prefix: -max_target_seqs
 outputs:
   blast_out:
     type: File

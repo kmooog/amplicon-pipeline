@@ -23,15 +23,19 @@ inputs:
     'sbg:y': -62.66566848754883
   - id: blastdb
     type: string
-    'sbg:x': 912.9746704101562
-    'sbg:y': 254.56581115722656
-outputs:
-  - id: blast_out
-    outputSource:
-      - blast/blast_out
+    'sbg:x': 886.5867919921875
+    'sbg:y': 284.07550048828125
+  - id: tax_map_db
     type: File
-    'sbg:x': 1200.007080078125
-    'sbg:y': 158
+    'sbg:x': 1192.77099609375
+    'sbg:y': -31.138456344604492
+outputs:
+  - id: tax_mapped_tsv
+    outputSource:
+      - tax_map/tax_mapped_tsv
+    type: 'File[]'
+    'sbg:x': 1457.9312744140625
+    'sbg:y': 91.27485656738281
 steps:
   - id: trimgalore
     in:
@@ -161,6 +165,8 @@ steps:
         source: remove_singleton/singleton_removed
       - id: evalue
         default: '1e-5'
+      - id: max_target_seqs
+        default: '1'
       - id: outfile
         default: blast_result.tsv
       - id: outfmt
@@ -168,6 +174,17 @@ steps:
     out:
       - id: blast_out
     run: ./blast.cwl
-    'sbg:x': 1072.6669921875
-    'sbg:y': 159.669677734375
+    'sbg:x': 1104.7105712890625
+    'sbg:y': 88.17594909667969
+  - id: tax_map
+    in:
+      - id: blast_out
+        source: blast/blast_out
+      - id: tax_map_db
+        source: tax_map_db
+    out:
+      - id: tax_mapped_tsv
+    run: ./tax_map.cwl
+    'sbg:x': 1323.228515625
+    'sbg:y': 93.12232971191406
 requirements: []
