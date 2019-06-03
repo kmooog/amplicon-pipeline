@@ -89,6 +89,11 @@ RUN make
 RUN make install
 WORKDIR /root
 
+# install blast
+WORKDIR /root
+RUN wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.9.0+-x64-linux.tar.gz
+RUN tar xzvf ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.9.0+-x64-linux.tar.gz
+
 # install in-house pipeline
 WORKDIR /root
 RUN pip3 install pathlib
