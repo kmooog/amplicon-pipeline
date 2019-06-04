@@ -18,7 +18,7 @@ inputs:
       position: 2
       prefix: --db
 outputs:
-  tg_out1:
+  uchime_out:
     type: File
     outputBinding:
-      glob: 'results.uchime'
+      glob: 'uchime.result'
