@@ -47,14 +47,15 @@ for tax in tax_list:
 	count_dict[tax] = {}
 
 for blast_result_line in open(blast_result):
+	cluster_size = int(blast_result_line.split("_")[0])
 	blast_result_list = blast_result_line.strip().split("\t")
 	tax_id = blast_result_list[1].split(".")[0]
 	for i in range(6):
 		annotated_tax = dict_list[i][tax_id]
 		if annotated_tax not in count_dict[tax_list[i]]:
-			count_dict[tax_list[i]][annotated_tax] = 1
+			count_dict[tax_list[i]][annotated_tax] = cluster_size
 		else :
-			count_dict[tax_list[i]][annotated_tax] += 1
+			count_dict[tax_list[i]][annotated_tax] += cluster_size
 
 
 for i in range(6):

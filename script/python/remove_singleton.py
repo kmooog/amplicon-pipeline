@@ -14,9 +14,10 @@ for vsearch_centroids in open(vsearch_out):
 	if vsearch_centroids[0] == ">":
 		with open(sys.argv[i + 2]) as f:
 			clusters = f.read()
-			if clusters.count(">") > 1:
+			cluster_num = clusters.count(">")
+			if cluster_num > 1:
 				flag = True
-				output.write(">" + str(i) + "_" + vsearch_centroids.replace(">","") + "\n")
+				output.write(">" + str(cluster_num) + "_" + vsearch_centroids.replace(">","") + "\n")
 			else:
 				flag = False
 		i += 1
