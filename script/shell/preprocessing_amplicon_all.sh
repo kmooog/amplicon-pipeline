@@ -1,0 +1,9 @@
+for i in `seq -f %03g 1 722`
+do
+  mkdir ${i} 
+  cd ${i}
+  cp ../${i}_1.fq.gz .
+  cp ../${i}_2.fq.gz .
+  qsub /home/kumay/amplicon-pipeline/script/shell/preprocessing_amplicon.sh ${i}
+  cd ..
+done
