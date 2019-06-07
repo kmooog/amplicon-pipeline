@@ -34,8 +34,44 @@ outputs:
     outputSource:
       - tax_map/tax_mapped_tsv
     type: 'File[]'
-    'sbg:x': 1457.9312744140625
-    'sbg:y': 91.27485656738281
+    'sbg:x': 1620.6024169921875
+    'sbg:y': 85.61833953857422
+  - id: vsearch_out_file
+    outputSource:
+      - vsearch/vsearch_out_file
+    type: 'File[]'
+    'sbg:x': 865.1642456054688
+    'sbg:y': 11.99949836730957
+  - id: singleton_removed
+    outputSource:
+      - remove_singleton/singleton_removed
+    type: File
+    'sbg:x': 1051.8125
+    'sbg:y': 310.15185546875
+  - id: blast_out
+    outputSource:
+      - blast/blast_out
+    type: File
+    'sbg:x': 1237.9244384765625
+    'sbg:y': 215.03489685058594
+  - id: chimera_filtered
+    outputSource:
+      - uchime_filter/chimera_filtered
+    type: File
+    'sbg:x': 702.7150268554688
+    'sbg:y': -43.58048629760742
+  - id: uchime_out
+    outputSource:
+      - uchime/uchime_out
+    type: File
+    'sbg:x': 527.0778198242188
+    'sbg:y': 318.7576599121094
+  - id: sed_results
+    outputSource:
+      - sed/sed_results
+    type: stdout
+    'sbg:x': 426.12103271484375
+    'sbg:y': -72.62285614013672
 steps:
   - id: trimgalore
     in:
@@ -145,8 +181,8 @@ steps:
     out:
       - id: vsearch_out_file
     run: ./vsearch.cwl
-    'sbg:x': 719.8574829101562
-    'sbg:y': 90.25492858886719
+    'sbg:x': 740.3447265625
+    'sbg:y': 158.96749877929688
   - id: remove_singleton
     in:
       - id: vsearch_out
@@ -155,8 +191,8 @@ steps:
     out:
       - id: singleton_removed
     run: ./remove_singleton.cwl
-    'sbg:x': 861.4810791015625
-    'sbg:y': 86.37716674804688
+    'sbg:x': 892.5120849609375
+    'sbg:y': 163.56808471679688
   - id: blast
     in:
       - id: blastdb
@@ -185,6 +221,6 @@ steps:
     out:
       - id: tax_mapped_tsv
     run: ./tax_map.cwl
-    'sbg:x': 1323.228515625
-    'sbg:y': 93.12232971191406
+    'sbg:x': 1354.213623046875
+    'sbg:y': 76.85502624511719
 requirements: []
