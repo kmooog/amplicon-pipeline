@@ -66,12 +66,6 @@ outputs:
     type: File
     'sbg:x': 527.0778198242188
     'sbg:y': 318.7576599121094
-  - id: sed_results
-    outputSource:
-      - sed/sed_results
-    type: stdout
-    'sbg:x': 426.12103271484375
-    'sbg:y': -72.62285614013672
 steps:
   - id: trimgalore
     in:
