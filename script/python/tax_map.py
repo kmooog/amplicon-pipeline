@@ -51,11 +51,12 @@ for blast_result_line in open(blast_result):
 	blast_result_list = blast_result_line.strip().split("\t")
 	tax_id = blast_result_list[1].split(".")[0]
 	for i in range(6):
-		annotated_tax = dict_list[i][tax_id]
-		if annotated_tax not in count_dict[tax_list[i]]:
-			count_dict[tax_list[i]][annotated_tax] = cluster_size
-		else :
-			count_dict[tax_list[i]][annotated_tax] += cluster_size
+		if tax_id in dict_list[i]:
+			annotated_tax = dict_list[i][tax_id]
+			if annotated_tax not in count_dict[tax_list[i]]:
+				count_dict[tax_list[i]][annotated_tax] = cluster_size
+			else :
+				count_dict[tax_list[i]][annotated_tax] += cluster_size
 
 
 for i in range(6):
