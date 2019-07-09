@@ -1,4 +1,4 @@
-max_dir_num = 6
+max_dir_num = 722 + 1 
 taxon_maps = ["class_mapped","family_mapped","genus_mapped","kingdom_mapped","order_mapped","phylum_mapped"]
 for taxon in taxon_maps:
    taxon_dict = {}
@@ -17,6 +17,7 @@ for taxon in taxon_maps:
       taxon_dict[i] = tmp_taxon_dict
    taxon_list.sort()   
    with open("merged_" + taxon ,"w") as out:
+      out.write("Taxon")
       for i in range (1, max_dir_num):
          out.write("\t" + str(i).zfill(3))
       out.write("\n")
