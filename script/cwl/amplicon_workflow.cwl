@@ -21,39 +21,7 @@ inputs:
     type: string
     'sbg:x': -223.34405517578125
     'sbg:y': -62.66566848754883
-  - id: blastdb
-    type: string
-    'sbg:x': 886.5867919921875
-    'sbg:y': 284.07550048828125
-  - id: tax_map_db
-    type: File
-    'sbg:x': 1192.77099609375
-    'sbg:y': -31.138456344604492
 outputs:
-  - id: tax_mapped_tsv
-    outputSource:
-      - tax_map/tax_mapped_tsv
-    type: 'File[]'
-    'sbg:x': 1620.6024169921875
-    'sbg:y': 85.61833953857422
-  - id: vsearch_out_file
-    outputSource:
-      - vsearch/vsearch_out_file
-    type: 'File[]'
-    'sbg:x': 865.1642456054688
-    'sbg:y': 11.99949836730957
-  - id: singleton_removed
-    outputSource:
-      - remove_singleton/singleton_removed
-    type: File
-    'sbg:x': 1051.8125
-    'sbg:y': 310.15185546875
-  - id: blast_out
-    outputSource:
-      - blast/blast_out
-    type: File
-    'sbg:x': 1237.9244384765625
-    'sbg:y': 215.03489685058594
   - id: chimera_filtered
     outputSource:
       - uchime_filter/chimera_filtered
@@ -64,8 +32,8 @@ outputs:
     outputSource:
       - uchime/uchime_out
     type: File
-    'sbg:x': 527.0778198242188
-    'sbg:y': 318.7576599121094
+    'sbg:x': 558.114013671875
+    'sbg:y': 303.0191650390625
 steps:
   - id: trimgalore
     in:
@@ -162,59 +130,4 @@ steps:
     run: ./bowtie2.cwl
     'sbg:x': -102.98512268066406
     'sbg:y': 9.3588285446167
-  - id: vsearch
-    in:
-      - id: file
-        source: uchime_filter/chimera_filtered
-      - id: vsearch_id
-        default: '0.97'
-      - id: vsearch_out1
-        default: vsearch_out
-      - id: vsearch_out2
-        default: vsearch_out
-    out:
-      - id: vsearch_out_file
-    run: ./vsearch.cwl
-    'sbg:x': 740.3447265625
-    'sbg:y': 158.96749877929688
-  - id: remove_singleton
-    in:
-      - id: vsearch_out
-        source:
-          - vsearch/vsearch_out_file
-    out:
-      - id: singleton_removed
-    run: ./remove_singleton.cwl
-    'sbg:x': 892.5120849609375
-    'sbg:y': 163.56808471679688
-  - id: blast
-    in:
-      - id: blastdb
-        source: blastdb
-      - id: blastinput
-        source: remove_singleton/singleton_removed
-      - id: evalue
-        default: '1e-5'
-      - id: max_target_seqs
-        default: '1'
-      - id: outfile
-        default: blast_result.tsv
-      - id: outfmt
-        default: '6'
-    out:
-      - id: blast_out
-    run: ./blast.cwl
-    'sbg:x': 1104.7105712890625
-    'sbg:y': 88.17594909667969
-  - id: tax_map
-    in:
-      - id: blast_out
-        source: blast/blast_out
-      - id: tax_map_db
-        source: tax_map_db
-    out:
-      - id: tax_mapped_tsv
-    run: ./tax_map.cwl
-    'sbg:x': 1354.213623046875
-    'sbg:y': 76.85502624511719
 requirements: []
