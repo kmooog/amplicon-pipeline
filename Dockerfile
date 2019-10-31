@@ -30,6 +30,11 @@ WORKDIR /root
 RUN wget https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz --no-check-certificate
 RUN tar xzvf Python-3.5.2.tgz
 
+# seqkit
+WORKDIR /root
+RUN wget  wget https://github.com/shenwei356/seqkit/releases/download/v0.11.0/seqkit_linux_amd64.tar.gz
+RUN tar -zxvf seqkit_linux_amd64.tar.gz
+
 WORKDIR ./Python-3.5.2
 RUN ./configure --with-threads
 RUN make install
