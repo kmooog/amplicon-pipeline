@@ -12,7 +12,11 @@ outputs:
     type: File
     outputBinding:
       glob: centroids_remove_tripleton.fa
-  result_removed3: 
+  result_removed_tripleton_with_ID: 
     type: File
     outputBinding:
-      glob: result_removed3.csv
+      glob: result_removed_tripleton_with_ID.csv
+  rename_list: 
+    type: File
+    outputBinding:
+      glob: rename_list.csv
