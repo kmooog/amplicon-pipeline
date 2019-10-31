@@ -40,10 +40,15 @@ if count_cluster_size > 3:
 tmprange = range(0,max_num)
 ab_list = [[] for i in tmprange]
 cluster_id = 0
+
+renameListFile = open("rename_list.csv","w")
+renameList = []
+
 for a in open("removed_3"):
    if len(a) > 1:
       sample_id = ""
       if a[0] == "*":
+         renameList.append(a.strip().replace("*",""))
          sample_id = a[1:4]
          for i in tmprange:
             ab_list[i].append(0)
@@ -65,13 +70,17 @@ print("file read! start normalize")
 #ab_list = [[t * 1.0 / sum(ab_list[i]) for t in ab_list[i]] for i in tmprange]
 print("start output")
 
-out = open("result_removed3.csv", "w")
+out = open("result_removed3_with_ID.csv", "w")
 out.write(','.join([str(i+1).zfill(3) for i in tmprange]))
 out.write("\n")
+
+for i,a in enumerate(renameList):
+   renameListFile.write("OTU_" + str(i) +"," +  a + "\n")
 
 for s in range(len(ab_list[0])):
    tmplist = []
    for i in tmprange:
       tmplist.append(ab_list[i][s])
+   out.write("OTU_"+str(s) + ",")
    out.write(','.join([str(i) for i in tmplist]))
    out.write('\n')
