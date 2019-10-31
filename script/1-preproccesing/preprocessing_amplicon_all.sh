@@ -1,4 +1,4 @@
-for i in `seq -f %03g $1 $2`
+for i in `seq -f %03g ${1} ${2}`
 do
   mkdir ${i} 
   cd ${i}
@@ -6,4 +6,8 @@ do
   cp ../${i}_2.fq.gz .
   qsub /home/kumay/amplicon-pipeline/script/shell/preprocessing_amplicon.sh ${i}
   cd ..
+done
+for i in `seq -f %03g ${1} ${2}`
+do
+  cat ${i}/prinseq_out.fastq >> all.fq
 done
