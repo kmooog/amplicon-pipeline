@@ -1,4 +1,4 @@
-for i in `seq -f %03g 1 722`
+for i in `seq -f %03g $1 $2`
 do
   mkdir ${i} 
   cd ${i}
