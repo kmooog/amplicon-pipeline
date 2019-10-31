@@ -1,18 +1,20 @@
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: ["python", "/root/amplicon-pipeline/script/2-analysis/combine_preprocessed.sh"]
+baseCommand: seqkit
+arguments: ["fq2fa"]
 inputs:
-  uchimeout:
+  input:
     type: File
     inputBinding:
       position: 1
-  fasta:
-    type: File
+  output:
+    type: string
     inputBinding:
       position: 2
+      prefix: -o
 
 outputs:
-  chimera_filtered: 
+  fasta: 
     type: File
     outputBinding:
-      glob: all.fq
+      glob: all.fa

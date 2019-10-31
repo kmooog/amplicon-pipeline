@@ -16,7 +16,7 @@ inputs:
     type: string
     inputBinding:
       position: 3
-      prefix: --clusters
+      prefix: --msaout
   vsearch_id:
     type: string
     inputBinding:
@@ -29,4 +29,4 @@ outputs:
       type: array
       items: File
     outputBinding:
-      glob: "vsearch_out*"
+      glob: "vsearch_out.msa"
