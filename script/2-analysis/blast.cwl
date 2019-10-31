@@ -26,6 +26,11 @@ inputs:
     type: string
     inputBinding:
       prefix: -max_target_seqs
+  num_threads:
+    type: string
+    inputBinding:
+      prefix: -num_threads
+
 outputs:
   blast_out:
     type: File
