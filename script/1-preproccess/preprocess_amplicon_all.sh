@@ -4,6 +4,6 @@ do
   cd ${i}
   cp ../${i}_1.fq.gz .
   cp ../${i}_2.fq.gz .
-  qsub /home/kumay/amplicon-pipeline/script/1-preproccesing/preprocessing_amplicon.sh ${i}
+  qsub /home/kumay/amplicon-pipeline/script/1-preproccess/preprocess_amplicon.sh ${i}
   cd ..
 done

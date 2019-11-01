@@ -1,20 +1,18 @@
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: seqkit
-arguments: ["fq2fa"]
+baseCommand: ["python", "/root/amplicon-pipeline/script/1-preproccess/uchime_filter.py"]
 inputs:
-  input:
+  uchimeout:
     type: File
     inputBinding:
       position: 1
-  output:
-    type: string
+  fasta:
+    type: File
     inputBinding:
       position: 2
-      prefix: -o
 
 outputs:
-  fasta: 
+  chimera_filtered: 
     type: File
     outputBinding:
-      glob: all.fa
+      glob: chimera_filtered.fa

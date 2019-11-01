@@ -1,6 +1,6 @@
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: ["python", "/root/amplicon-pipeline/script/2-analysis/extract_seqs.py"]
+baseCommand: ["python", "/root/amplicon-pipeline/script/2-parse_preprocessed_data/extract_seqs.py"]
 inputs:
   merged_fasta:
     type: File
