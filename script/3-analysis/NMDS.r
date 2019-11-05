@@ -8,9 +8,8 @@ library(ggplot2)
 library(gtable)
 library(scales)
 library(dichromat)
-input_filename = "result_removed3.csv"; type="All";
 
-#meta_filename  = "/Users/yohei_k/analysis/env_data/NMDS_meta16S/metagenome_sample_depth.tsv"
+input_filename = "result_removed3.csv"; type="All";
 
 meta_filename  = "/home/kumay/r/amplicon/NMDS/metagenome_sample_depth.tsv"
 
@@ -29,38 +28,32 @@ outplot<-function(prefix){
 output_filename_png <-str_c(prefix,".png")
 output_filename_eps <-str_c(prefix,".eps")
 
-dev.copy(png,
-bg = "transparent",
-file=output_filename_png,
-width=1280, 
-height=960)
-dev.off()
-dev.copy2eps(file=output_filename_eps,
-family="ArialMT", 
-horizontal = FALSE,
-onefile = FALSE, 
-pointsize=10
-)
-#dev.off()
+dev.copy(
+	png,
+	bg = "transparent",
+	file=output_filename_png,
+	width=1280, 
+	height=960)
+	dev.off()
+	dev.copy2eps(file=output_filename_eps,
+	family="ArialMT", 
+	horizontal = FALSE,
+	onefile = FALSE, 
+	pointsize=10
+	)
 }
-
 
 x <- read.table(input_filename, header=T,sep=",", check.names=FALSE)
 x <- data.frame(as.matrix(x), check.names=FALSE)
 x <- data.matrix(x)
-#テストデータなので合計0がある。よって+1する。本解析では消す
-#x <- x+1
-
-
 
 sum_x <- apply(x, 2, sum)
 x_normalized <- apply(x, 1, function(xx) xx/sum_x)
 x_normalized <- t(x_normalized)
-h1 <- x_normalized  #count
-#h2 <- (h1[,col_sortlist])  #extract and order 
+h1 <- x_normalized
 h2 <- (h1)
-h3 <- prop.table(as.matrix(h2), margin=1)  #row の比率
-h4 <- prop.table(as.matrix(h2), margin=2)  #column の比率
+h3 <- prop.table(as.matrix(h2), margin=1) 
+h4 <- prop.table(as.matrix(h2), margin=2)
 
 sample_list =colnames(h4)
 
@@ -82,9 +75,7 @@ pelagic_zones =="Abyssopelagic" ~ "gray",
 pelagic_zones =="Hadopelagic" ~ "black", 
 )
 
-pelagic_zone_colors_df <- data.frame("Classes"= factor(pelagic_zone_colors), 
-      row.names=rownames(metadata_table))
-
+pelagic_zone_colors_df <- data.frame("Classes"= factor(pelagic_zone_colors), row.names=rownames(metadata_table))
 
 pelagic_zones_df <- data.frame("Classes"= factor(pelagic_zones), row.names=rownames(metadata_table))
 color_zone       = c( "orange","green","blue","gray","black")
@@ -98,14 +89,17 @@ distance = "bray",
 k=2,
 trymax=20
 )
-data.scores      = as.data.frame(scores(nmds))  #Using the scores function from vegan to extract the site scores and convert to a data.frame
-#サンプル名
-data.scores$site = rownames(data.scores)  # create a column of site names, from the rownames of data.scores
+data.scores      = as.data.frame(scores(nmds))  # Using the scores function from vegan to extract the site scores and convert to a data.frame
+
+# Sample names
+
+data.scores$site = rownames(data.scores)  # Create a column of site names, from the rownames of data.scores
 
 
 write.csv(data.scores,"data.scores.csv")
 
-#グルーピング
+# Grouping
+
 my_group = pelagic_zones_df
 data.scores$grp        = my_group[,1]
 species.scores         = as.data.frame(scores(nmds, "species"))  #Using the scores function from vegan to extract the species scores and convert to a data.frame
@@ -115,7 +109,6 @@ NMDS = data.frame(MDS1 = nmds$points[,1],
 MDS2 = nmds$points[,2],
 group= my_group[,1],
 check.names=FALSE)
-#NMDS.mean = aggregate(NMDS[,1:2],list(group=my_group[,1]),mean)
 g <- ggplot(data=data.scores,
 aes(x =NMDS1,
 y =NMDS2,
@@ -125,15 +118,10 @@ g <- g + coord_equal()
 g <- g + theme_bw()
 g <- g + geom_point(show.legend=TRUE,
 alpha = 0.7,
-size  = 2)   # add the site labels
-#plot(g)
-#output=========================
+size  = 2)
+
 ggsave("NMDS.jpg", plot = g)
 ggsave("NMDS.png", plot = g)
 ggsave("NMDS.eps", plot = g)
 ggsave("NMDS.svg", plot = g)
-
-#outplot(c_title_prefix)
-#print("Output: ")
-#print(c_title_prefix)
 
