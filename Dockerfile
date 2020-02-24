@@ -91,7 +91,7 @@ WORKDIR /root
 
 # install blast
 WORKDIR /root
-RUN wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.9.0+-x64-linux.tar.gz
+RUN wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.10.0/ncbi-blast-2.10.0+-x64-linux.tar.gz
 RUN tar xzvf ncbi-blast-2.9.0+-x64-linux.tar.gz
 
 # install in-house pipeline
