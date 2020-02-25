@@ -102,3 +102,4 @@ RUN git clone https://github.com/kmooog/amplicon-pipeline.git
 # add permission
 WORKDIR /
 RUN chmod 777 root
+
