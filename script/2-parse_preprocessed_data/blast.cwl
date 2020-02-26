@@ -3,7 +3,7 @@ class: CommandLineTool
 baseCommand: /root/ncbi-blast-2.9.0+/bin/blastn
 inputs:
   blastdb:
-    type: string
+    type: File
     inputBinding:
       prefix: -db 
   blastinput:

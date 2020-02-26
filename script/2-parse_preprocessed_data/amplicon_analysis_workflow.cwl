@@ -13,6 +13,10 @@ inputs:
     type: File
     'sbg:x': 84.73381042480469
     'sbg:y': -238.82733154296875
+  - id: blastdb
+    type: File
+    'sbg:x': -144.5056610107422
+    'sbg:y': 71.64838409423828
 outputs:
   - id: result_removed_tripleton_with_ID
     outputSource:
@@ -30,8 +34,8 @@ outputs:
     outputSource:
       - extract_seqs/centroids_remove_tripleton
     type: File
-    'sbg:x': -169.34808349609375
-    'sbg:y': 85.59882354736328
+    'sbg:x': -265.7366027832031
+    'sbg:y': 115.30303192138672
   - id: blast_out
     outputSource:
       - blast/blast_out
@@ -58,8 +62,20 @@ steps:
     'sbg:y': -98
   - id: blast
     in:
+      - id: blastdb
+        source: blastdb
       - id: blastinput
         source: extract_seqs/centroids_remove_tripleton
+      - id: evalue
+        default: '1e-15'
+      - id: max_target_seqs
+        default: '1'
+      - id: num_threads
+        default: '10'
+      - id: outfile
+        default: blast_out
+      - id: outfmt
+        default: '6'
     out:
       - id: blast_out
     run: ./blast.cwl
