@@ -84,3 +84,4 @@ for s in range(len(ab_list[0])):
    out.write("OTU_"+str(s) + ",")
    out.write(','.join([str(i) for i in tmplist]))
    out.write('\n')
+out.close()

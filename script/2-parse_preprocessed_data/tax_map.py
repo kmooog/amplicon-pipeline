@@ -34,3 +34,4 @@ if __name__ == '__main__':
             out = id_tmp + "\t" + "undefined"
 
         out_file.write(out + "\n")
+    out_file.close()

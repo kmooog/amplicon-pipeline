@@ -26,7 +26,7 @@ for fasta_line in open(fasta):
 			flag = False
 	elif flag == True:
 		output.write(fasta_line + "\n")
-
+output.close()
 
 
 
