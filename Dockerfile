@@ -65,9 +65,13 @@ RUN tar xzvf prinseq-lite-0.20.4.tar.gz
 RUN chmod 777  /root/prinseq-lite-0.20.4/prinseq-lite.pl
 ENV PATH $PATH:/root/prinseq-lite-0.20.4
 
-# install pip3
+# install pip3 
 RUN apt-get install -y python-pip python3-pip
 ENV PYTHONPATH "${PYTHONPATH}:/usr/local/lib/python3.6/dist-packages"
+
+# insttall biopython
+WORKDIR /root
+RUN pip3 install biopython
 
 # install uchime
 WORKDIR /root
@@ -97,7 +101,7 @@ RUN tar xzvf ncbi-blast-2.10.0+-x64-linux.tar.gz
 # install in-house pipeline
 WORKDIR /root
 RUN pip3 install pathlib
-RUN git clone   https://github.com/kmooog/amplicon-pipeline.git
+RUN git clone https://github.com/kmooog/amplicon-pipeline.git
 
 # add permission
 WORKDIR /
