@@ -71,7 +71,7 @@ ENV PYTHONPATH "${PYTHONPATH}:/usr/local/lib/python3.6/dist-packages"
 
 # insttall biopython
 WORKDIR /root
-RUN pip3 install biopython
+RUN pip3 install biopython==1.70
 
 # install uchime
 WORKDIR /root
