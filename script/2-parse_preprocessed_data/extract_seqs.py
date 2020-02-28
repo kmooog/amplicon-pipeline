@@ -1,5 +1,6 @@
-from Bio import SeqIO
 import sys 
+sys.path.append("/usr/local/lib/python3.6/dist-packages")
+from Bio import SeqIO
 
 argvs = sys.argv
 vsearch_msa = argvs[1]
