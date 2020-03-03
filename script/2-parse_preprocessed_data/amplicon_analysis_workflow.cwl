@@ -13,10 +13,10 @@ inputs:
     type: File
     'sbg:x': -144.5056610107422
     'sbg:y': 71.64838409423828
-  - id: merged_fasta_with_ID
+  - id: merged_fasta
     type: File
-    'sbg:x': -605
-    'sbg:y': -83
+    'sbg:x': -610
+    'sbg:y': -90
 outputs:
   - id: result_removed_tripleton_with_ID
     outputSource:
@@ -108,8 +108,8 @@ steps:
     'sbg:y': -104.6755142211914
   - id: vsearch
     in:
-      - id: merged_fasta_with_ID
-        source: merged_fasta_with_ID
+      - id: merged_fasta
+        source: merged_fasta
       - id: out_centroid
         default: vsearch_out
       - id: out_msa
