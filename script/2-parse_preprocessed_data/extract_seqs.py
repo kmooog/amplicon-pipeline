@@ -17,7 +17,7 @@ for record in SeqIO.parse(open(vsearch_msa), "fasta"):
       if int(record.id.replace("*","").replace(">","")[0:3]) > max_num:
          max_num = int(record.id.replace("*","").replace(">","")[0:3])
       if record.id.find("*") != -1:
-         if count_cluster_size > 3:
+         if count_cluster_size > 3: # remove tripleton
             out_fasta.write(">" + tmp_clusters[0] + "\n")
             out_fasta.write(tmp_clusters[1] + "\n")
             for tmp in tmp_cluster_members:
@@ -37,6 +37,8 @@ if count_cluster_size > 3:
    for tmp in tmp_cluster_members:
       out_tmp.write(tmp + "\n")
 
+out_fasta.close()
+out_tmp.close()
 
 tmprange = range(0,max_num)
 ab_list = [[] for i in tmprange]
@@ -65,18 +67,16 @@ for a in open("removed_3"):
       else:
          sample_id = a[0:3]
          ab_list[int(sample_id) - 1][-1] += 1
-print("file read! start normalize")
-#for i in tmprange:
-#   ab_list[i] = [t / sum(ab_list[i]) for t in ab_list[i]]
-#ab_list = [[t * 1.0 / sum(ab_list[i]) for t in ab_list[i]] for i in tmprange]
 print("start output")
 
-out = open("result_removed3_with_ID.csv", "w")
+out = open("result_removed_tripleton_with_ID.csv", "w")
 out.write(','.join([str(i+1).zfill(3) for i in tmprange]))
 out.write("\n")
 
 for i,a in enumerate(renameList):
    renameListFile.write("OTU_" + str(i) +"," +  a + "\n")
+
+renameListFile.close()
 
 for s in range(len(ab_list[0])):
    tmplist = []
