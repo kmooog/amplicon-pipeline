@@ -5,10 +5,6 @@ label: Analysis
 $namespaces:
   sbg: 'https://www.sevenbridges.com/'
 inputs:
-  - id: merged_fasta
-    type: File
-    'sbg:x': -414.15045166015625
-    'sbg:y': -97.10029602050781
   - id: taxmap
     type: File
     'sbg:x': 84.73381042480469
@@ -17,6 +13,10 @@ inputs:
     type: File
     'sbg:x': -144.5056610107422
     'sbg:y': 71.64838409423828
+  - id: merged_fasta_with_ID
+    type: File
+    'sbg:x': -605
+    'sbg:y': -83
 outputs:
   - id: result_removed_tripleton_with_ID
     outputSource:
@@ -48,11 +48,23 @@ outputs:
     type: File
     'sbg:x': 350.6017761230469
     'sbg:y': -104.72566223144531
+  - id: msaout
+    outputSource:
+      - vsearch/msaout
+    type: File
+    'sbg:x': -437
+    'sbg:y': -257
+  - id: centroid
+    outputSource:
+      - vsearch/centroid
+    type: File
+    'sbg:x': -363
+    'sbg:y': 15
 steps:
   - id: extract_seqs
     in:
       - id: merged_fasta
-        source: merged_fasta
+        source: vsearch/msaout
     out:
       - id: centroids_remove_tripleton
       - id: rename_list
@@ -94,4 +106,18 @@ steps:
     run: ./tax_map.cwl
     'sbg:x': 188.3510284423828
     'sbg:y': -104.6755142211914
+  - id: vsearch
+    in:
+      - id: merged_fasta_with_ID
+        source: merged_fasta_with_ID
+      - id: out_centroid
+        default: vsearch_out
+      - id: out_msa
+        default: vsearch_out.msa
+    out:
+      - id: centroid
+      - id: msaout
+    run: ./vsearch.cwl
+    'sbg:x': -456
+    'sbg:y': -81
 requirements: []
