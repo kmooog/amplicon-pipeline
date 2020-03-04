@@ -101,11 +101,8 @@ RUN tar xzvf ncbi-blast-2.10.0+-x64-linux.tar.gz
 # install in-house pipeline
 WORKDIR /root
 RUN pip3 install pathlib
+ADD .git/index /roor/
 RUN  git clone https://github.com/kmooog/amplicon-pipeline.git
-ADD run.sh /root/
-RUN chmod +x /root/run.sh
-WORKDIR /root/amplicon-pipeline
-CMD ./run.sh
 WORKDIR /root
 
 # add permission
