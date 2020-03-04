@@ -10,7 +10,7 @@ inputs:
     'sbg:x': 84.73381042480469
     'sbg:y': -238.82733154296875
   - id: blastdb
-    type: File
+    type: string
     'sbg:x': -144
     'sbg:y': 138
   - id: merged_fasta
