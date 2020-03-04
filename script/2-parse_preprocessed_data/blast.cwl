@@ -1,6 +1,6 @@
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: /root/ncbi-blast-2.9.0+/bin/blastn
+baseCommand: /root/ncbi-blast-2.10.0+/bin/blastn
 inputs:
   blastdb:
     type: File
