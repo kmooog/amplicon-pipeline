@@ -11,12 +11,16 @@ inputs:
     'sbg:y': -238.82733154296875
   - id: blastdb
     type: File
-    'sbg:x': -144.5056610107422
-    'sbg:y': 71.64838409423828
+    'sbg:x': -144
+    'sbg:y': 138
   - id: merged_fasta
     type: File
     'sbg:x': -610
     'sbg:y': -90
+  - id: blastdb_dir
+    type: Directory?
+    'sbg:x': -171
+    'sbg:y': 20
 outputs:
   - id: result_removed_tripleton_with_ID
     outputSource:
@@ -76,6 +80,8 @@ steps:
     in:
       - id: blastdb
         source: blastdb
+      - id: blastdb_dir
+        source: blastdb_dir
       - id: blastinput
         source: extract_seqs/centroids_remove_tripleton
       - id: evalue

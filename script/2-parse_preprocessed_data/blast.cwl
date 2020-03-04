@@ -1,11 +1,20 @@
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: /root/ncbi-blast-2.10.0+/bin/blastn
+baseCommand: /root/ncbi-blast-2.9.0+/bin/blastn
+requirements:
+  - class: InitialWorkDirRequirement
+    listing:
+      - entry: $(inputs.blastdb_dir)
+        writable: False
+
 inputs:
+  blastdb_dir:
+    type: Directory?
   blastdb:
-    type: File
+    type: string?
     inputBinding:
-      prefix: -db 
+      prefix: -db
+      valueFrom: $(inputs.blastdb_dir.path)/$(inputs.blastdb)
   blastinput:
     type: File
     inputBinding:
