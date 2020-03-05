@@ -102,7 +102,7 @@ RUN tar xzvf ncbi-blast-2.10.0+-x64-linux.tar.gz
 WORKDIR /root
 RUN pip3 install pathlib
 ADD .git/index /root/
-RUN  git clone https://github.com/kmooog/amplicon-pipeline.git
+RUN git clone https://github.com/kmooog/amplicon-pipeline.git
 WORKDIR /root
 
 # add permission
