@@ -63,6 +63,10 @@ steps:
     in:
       - id: merged_fasta
         source: merged_fasta
+      - id: out_centroid
+        default: vsearch_out
+      - id: out_msa
+        default: vsearch_out.msa
     out:
       - id: centroid
       - id: msaout
