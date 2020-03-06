@@ -10,11 +10,11 @@ inputs:
     'sbg:x': -684.3931274414062
     'sbg:y': 27
   - id: blastdb_dir
-    type: Directory?
+    type: Directory
     'sbg:x': -237.0044708251953
     'sbg:y': 187.9877166748047
   - id: blastdb
-    type: string?
+    type: string
     'sbg:x': -171.01116943359375
     'sbg:y': 298.0055847167969
   - id: taxmap
