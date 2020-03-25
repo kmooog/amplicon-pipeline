@@ -31,7 +31,7 @@ if __name__ == '__main__':
         if "*"+raw_id in blast_dict:
             out = id_tmp + "\t" + tax_dict[blast_dict["*"+raw_id].split(".")[0]].split()[3]
         else:
-            out = id_tmp + "\t" + "undefined"
+            out = id_tmp + "\t" + "unassigned"
 
         out_file.write(out + "\n")
     out_file.close()
