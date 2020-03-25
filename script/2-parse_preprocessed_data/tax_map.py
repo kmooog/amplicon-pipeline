@@ -1,4 +1,5 @@
 from argparse import ArgumentParser
+import sys
 def parser():
     argparser = ArgumentParser()
     argparser.add_argument('-taxmap', type=open,
@@ -29,7 +30,11 @@ if __name__ == '__main__':
         raw_id = a.split(",")[1].strip()
         out = ""
         if "*"+raw_id in blast_dict:
-            out = id_tmp + "\t" + tax_dict[blast_dict["*"+raw_id].split(".")[0]].split()[3]
+            tax_map_line = tax_dict[blast_dict["*"+raw_id].split(".")[0]]
+            tax_map_index_1 = [i for i, x in enumerate(tax_map_line) if x == '\t'][2]
+            tax_map_index_2 = tax_map_line.rfind(";")
+            tax_info = tax_map_line[tax_map_index_1+1:tax_map_index_2+1]
+            out = id_tmp + "\t" + tax_info.replace(" ","_")
         else:
             out = id_tmp + "\t" + "unassigned"
 
