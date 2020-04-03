@@ -1,6 +1,7 @@
 # Requirements
 
 This pipeline is for UGE server with Singularity container environment. Docker also may work, but never tested.
+If your server use different job scheduler, please edit wrapper scripts (`preprocessing_amplicon_all.sh` and `parse_preprocessed_data.sh`).
 
 # Run scripts
 
@@ -15,4 +16,4 @@ This pipeline is for UGE server with Singularity container environment. Docker a
 ## parse_preprocessed_data
 
 - Edit file paths in `parse_preprocessed_data.sh` for your system.
-- Run `sh /path/to/script/parse_preprocessed_data.sh` 
+- Run `qsub /path/to/script/parse_preprocessed_data.sh`.
